@@ -12,13 +12,13 @@ Nếu máy bạn 	8GB (khuyến khích 16GB) trở lên thì dùng phương án 
 ## Windows Subsystem for Linux or WSL
 
 * Khuyên dùng nếu máy bạn 8GB hoặc ít hơn, nhưng không còn nhiều ổ cứng/ít. (máy mà đủ trâu để chạy Virtual Machine thì chạy WSL ngon ơ yên tâm)
-* Mọi người có thể đọc qua [link này](`https://learn.microsoft.com/en-us/windows/wsl/install`) để có hướng dẫn cụ thể.
-* Hoặc nếu lười đọc docs thì mình có tìm thấy [link youtube này](`https://youtu.be/aIYhaeJa90g?si=bqBFyaN3AM4gZRJo`).
+* Mọi người có thể đọc qua [link này](https://learn.microsoft.com/en-us/windows/wsl/install) để có hướng dẫn cụ thể.
+* Hoặc nếu lười đọc docs thì mình có tìm thấy [link youtube này](https://youtu.be/aIYhaeJa90g?si=bqBFyaN3AM4gZRJo).
 
 ## Dual boot Ubuntu
 
-* Nếu máy bạn quá yếu để chạy 2 cái trên. Còn 1 cách là mình sẽ vừa chạy Ubuntu vừa chạy Windows 10/11. Bình thường khi mở máy lên bạn sẽ vào thẳng windows 10/11 luôn. Nhưng khi cài dual boot thì sau khi cài đặt thành công bạn sẽ phải lựa chọn option như này thế này: ![alt text](assets/windows_boot_manager.png)
-  hoặc như này: ![alt text](assets/grub.png)
+* Nếu máy bạn quá yếu để chạy 2 cái trên. Còn 1 cách là mình sẽ vừa chạy Ubuntu vừa chạy Windows 10/11. Bình thường khi mở máy lên bạn sẽ vào thẳng windows 10/11 luôn. Nhưng khi cài dual boot thì sau khi cài đặt thành công bạn sẽ phải lựa chọn option như này thế này: ![alt text](assets/windows_boot_manager.png)  
+hoặc như này: ![alt text](assets/grub.png)
 * Vì nó hơi dài nên mình cũng lười hướng dẫn ở đây. Bạn có thể lên youtube tìm hiểu thử cách dual boot. Từ khóa có thể như "how to install dual boot Ubuntu on Windows" hoặc "cách dual boot Ubuntu trên Windows".
 
 # Dev Environment
@@ -36,8 +36,8 @@ Nếu máy bạn 	8GB (khuyến khích 16GB) trở lên thì dùng phương án 
   2. Cài oh-my-zsh. Đây là một cái framework giúp bạn tùy chỉnh zsh một cách dễ dàng hơn!
   3. (có thể skip) Cài powerlevel10k. Đây là một cái theme cho zsh. Nếu như có oh-my-zsh thì cài cái powerlevel10k sẽ dễ dàng hơn nhiều
 
-  * Nếu bạn nào cài Ubuntu qua WSL rồi thì có thể dùng link youtube này [(tiếng Việt)](`https://youtu.be/jtk3Aw1wqRQ?si=mYDREyBC2JO3qrUa`) [(tiếng Anh)](`https://youtu.be/235G6X5EAvM?si=8Y1mlvRivkU0un24`)
-  * Nếu cài Ubuntu qua Virtual Machine hoặc Dual boot thì có thể vào [(link này (tiếng Anh))](`https://youtu.be/z7wzRKkYdFg?si=b2Dc-43cDpOjpbgH`)
+  * Nếu bạn nào cài Ubuntu qua WSL rồi thì có thể dùng link youtube này [(tiếng Việt)](https://youtu.be/jtk3Aw1wqRQ?si=mYDREyBC2JO3qrUa) [(tiếng Anh)](https://youtu.be/235G6X5EAvM?si=8Y1mlvRivkU0un24)
+  * Nếu cài Ubuntu qua Virtual Machine hoặc Dual boot thì có thể vào [(link này (tiếng Anh))](https://youtu.be/z7wzRKkYdFg?si=b2Dc-43cDpOjpbgH)
 * Sau khi cài xong thì SHELL của bạn sẽ từ như này ![alt text](assets/ubuntu_bash_demo.png) sang như này ![alt text](assets/p10k_demo.png)
 
 ## Python
