@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "eta"
+version = "0.1.0"
+description = "Simple Expense Tracking App"
+authors = ["Qmi <minh.pham1126@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+commitizen = "^3.14.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
