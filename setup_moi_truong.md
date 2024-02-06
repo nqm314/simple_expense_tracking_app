@@ -12,8 +12,8 @@ Nếu máy bạn 	8GB (khuyến khích 16GB) trở lên thì dùng phương án 
 ## Windows Subsystem for Linux or WSL
 
 * Khuyên dùng nếu máy bạn 8GB hoặc ít hơn, nhưng không còn nhiều ổ cứng/ít. (máy mà đủ trâu để chạy Virtual Machine thì chạy WSL ngon ơ yên tâm)
-* Mọi người có thể đọc qua `<a href="https://learn.microsoft.com/en-us/windows/wsl/install">`link này`</a>` để có hướng dẫn cụ thể. `<br/>`
-* Hoặc nếu lười đọc docs thì mình có tìm thấy `<a href="https://youtu.be/aIYhaeJa90g?si=bqBFyaN3AM4gZRJo">`link youtube này`</a>`.
+* Mọi người có thể đọc qua [link này](`https://learn.microsoft.com/en-us/windows/wsl/install`) để có hướng dẫn cụ thể.
+* Hoặc nếu lười đọc docs thì mình có tìm thấy [link youtube này](`https://youtu.be/aIYhaeJa90g?si=bqBFyaN3AM4gZRJo`).
 
 ## Dual boot Ubuntu
 
@@ -36,8 +36,8 @@ Nếu máy bạn 	8GB (khuyến khích 16GB) trở lên thì dùng phương án 
   2. Cài oh-my-zsh. Đây là một cái framework giúp bạn tùy chỉnh zsh một cách dễ dàng hơn!
   3. (có thể skip) Cài powerlevel10k. Đây là một cái theme cho zsh. Nếu như có oh-my-zsh thì cài cái powerlevel10k sẽ dễ dàng hơn nhiều
 
-  * Nếu bạn nào cài Ubuntu qua WSL rồi thì có thể dùng link youtube này `<a href="https://youtu.be/jtk3Aw1wqRQ?si=mYDREyBC2JO3qrUa">`(tiếng Việt)`</a>` `<a href="https://youtu.be/235G6X5EAvM?si=8Y1mlvRivkU0un24">` (tiếng Anh)`</a>`
-  * Nếu cài Ubuntu qua Virtual Machine hoặc Dual boot thì có thể vào `<a href="https://youtu.be/z7wzRKkYdFg?si=b2Dc-43cDpOjpbgH">`link này (tiếng Anh)`</a>`
+  * Nếu bạn nào cài Ubuntu qua WSL rồi thì có thể dùng link youtube này [(tiếng Việt)](`https://youtu.be/jtk3Aw1wqRQ?si=mYDREyBC2JO3qrUa`) [(tiếng Anh)](`https://youtu.be/235G6X5EAvM?si=8Y1mlvRivkU0un24`)
+  * Nếu cài Ubuntu qua Virtual Machine hoặc Dual boot thì có thể vào [(link này (tiếng Anh))](`https://youtu.be/z7wzRKkYdFg?si=b2Dc-43cDpOjpbgH`)
 * Sau khi cài xong thì SHELL của bạn sẽ từ như này ![alt text](assets/ubuntu_bash_demo.png) sang như này ![alt text](assets/p10k_demo.png)
 
 ## Python
