@@ -29,9 +29,9 @@
 * Chánh Nguyên và Phương Ngọc: 
     * lên ý tưởng làm google form khảo sát (hỏi về thói quen quản lý tiền, thói quen mua sắm, hỏi có sử dụng app quản lý chi tiêu không, các app đó là gì, kì vọng về một app quản lý cần có những gì,...)
     * Thu thập thông tin, lập bảng thống kê, vẽ biểu đồ khảo sát (có thể thống kê qua R, Python, Excel,...)
-* Các thành viên còn lại:
+~~* Các thành viên còn lại:
     * Tải 1 app quản lý chi tiêu bất kì từ hôm nay và sử dụng nó trong dịp nghỉ Tết.
-    * Đến hết Tết ghi lại cảm nhận (ngắn gọn: tên app, điểm mạnh, điểm yếu, hướng cải thiện)
+    * Đến hết Tết ghi lại cảm nhận (ngắn gọn: tên app, điểm mạnh, điểm yếu, hướng cải thiện)~~
 ## Bước thiết kế:
 ### Thiết kế UI/UX:
 * Chánh Nguyên và Phương Ngọc:
