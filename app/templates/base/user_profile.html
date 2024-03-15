@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% block title %}User Profile{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="container_header">
+        <h4>HỒ SƠ NGƯỜI DÙNG</h4>
+    </div>
+    {% csrf_token %}
+    <ul class="container_info">
+        <li class="container_list">
+            <p class="container_list-title">Họ và tên</p>
+            <input type="text" placeholder="{{user.get_full_name}}" class="container_list-info">
+        </li>
+        <li class="container_list">
+            <p class="container_list-title">Ngày sinh</p>
+            <input type="text" placeholder="01/01/2000" onfocus="(this.type='date')" class="container_list-info">
+        </li>
+        <li class="container_list">
+            <p class="container_list-title">Địa chỉ</p>
+            <input type="text" placeholder="Thành phố Hồ Chí Minh" class="container_list-info">
+        </li>
+        <li class="container_list">
+            <p class="container_list-title">Số điện thoại</p>
+            <input type="text" placeholder="0123456789" class="container_list-info">
+        </li>
+        <li class="container_list">
+            <p class="container_list-title">Email</p>
+            <input type="text" placeholder="VanA123@gmail.com" class="container_list-info">
+        </li>
+        <li class="container_list">
+            <p class="container_list-title title-btn"></p>
+            <button class="container_btn">Lưu</button>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}

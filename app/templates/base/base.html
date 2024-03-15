@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+</head>
+<body>
+    <div class="header">
+        <ul id="nav">
+            <li><a href="{% url 'home'%}">Trang chủ</a></li>
+            <li><a href="{% url 'profile'%}">Hồ sơ</a></li>
+            <li><a href="#">Thống kê</a></li>
+            <li><a href="{% url 'sign_out' %}">Đăng xuất</a></li>
+        </ul>
+    </div>
+    {% block content %}{% endblock %}
+    <div class="footer">
+        <ul class="footer_container footer-vitural"></ul>
+        <ul class="footer_container container_real">
+            <li class="footer_list footer_header">
+                CHĂM SÓC KHÁCH HÀNG
+            </li>
+            <li class="footer_list">
+                <a href="" class="footer_link">Trợ giúp</a>
+            </li>
+        </ul>
+        <ul class="footer_container container_real">
+            <li class="footer_list footer_header">
+                THEO DÕI CHÚNG TÔI TRÊN
+            </li>
+            <li class="footer_list">
+                <i class="footer_icon"></i>
+                <a href="" class="footer_link">Facebook</a>
+            </li>
+            <li class="footer_list">
+                <i class="footer_icon"></i>
+                <a href="" class="footer_link">Instagram</a>
+            </li>
+        </ul>
+        <ul class="footer_container footer-vitural"></ul>
+    </div>
+</body>
+</html>
