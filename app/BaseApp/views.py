@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Transaction, Profile
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout
 from .forms import SignUpForm
 from django.contrib import messages
 
 
 # Create your views here.
-
+@login_required
 def home(request):
     return render(request, 'base/home.html')
 
@@ -52,11 +51,17 @@ def sign_in_view(request):
     return render(request, 'user/sign_in.html', context)
 
 def sign_out_view(request):
+    logout(request)
     return redirect('sign_in')
 
+@login_required
 def profile_view(request):
-    profile = Profile.objects.get(user=request.user)
-    return render(request, 'base/user_profile.html', {'profile': profile,'user':request.user})
+    try: 
+        profile = Profile.objects.get(user=request.user)
+        return render(request, 'base/user_profile.html', {'profile': profile,'user':request.user})
+    except Profile.DoesNotExist:
+        messages.info(request, 'Profile not created')
+        return redirect('testing') # should redirect to a create 
 
 def testing_view(request):
     return render(request,'user/testing.html')

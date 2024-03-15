@@ -132,3 +132,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION = "VN"
+
+LOGIN_URL = 'sign_in'
