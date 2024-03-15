@@ -1,3 +1,27 @@
+# How to run
+## Prerequisites:
+Make sure you have these installed
+* Docker
+* make (check by running `make --version`)
+## Run:
+Thực hiện các bước sau để chạy được trên local container
+1. Build và chạy container bằng lệnh:
+```sh
+make up
+```
+2. Mở 1 terminal khác, migrate database bằng lệnh
+```sh
+make migrations
+```
+```sh
+make migrate
+```
+3. Khi này database đang rỗng, tạo superuser bằng lệnh:
+```sh
+make superuser
+```
+4. Vào trang 0.0.0.0:8000 hoặc 127.0.0.1:8000 sẽ thấy trang sign in. Chọn sign up để tạo tài khoản mới.
+
 # Mô tả app
 ## Những chức năng bắt buộc:
 * Đăng ký/Đăng nhập tài khoản (tạo tk hoặc đăng nhập qua google)
