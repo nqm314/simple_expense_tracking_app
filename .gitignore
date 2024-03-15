@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 wait-for-it.sh
+profile_pictures/
+notes.md
