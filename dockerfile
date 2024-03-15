@@ -32,3 +32,5 @@ RUN poetry install $(test "$YOUR_ENV" = production && echo "--only=main") --no-i
 
 # Creating folders, and files for a project:
 COPY . /code
+
+RUN chmod +x wait-for-it/wait-for-it.sh

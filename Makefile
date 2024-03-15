@@ -8,10 +8,10 @@ build:
 
 .PHONY: migrate
 migrate: 
-	docker-compose run web python app/manage.py migrate
+	docker-compose exec web python app/manage.py migrate
 .PHONY: migrations
 migrations: 
-	docker-compose run web python app/manage.py makemigrations
+	docker-compose exec web python app/manage.py makemigrations
 
 .PHONY: up
 up: 
@@ -19,7 +19,7 @@ up:
 
 .PHONY: superuser
 superuser: 
-	poetry run python -m manage createsuperuser
+	docker-compose exec web python app/manage.py createsuperuser
 
 .PHONY: update
 update: install migrations migrate
