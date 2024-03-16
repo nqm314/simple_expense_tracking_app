@@ -19,8 +19,7 @@ ENV YOUR_ENV=${YOUR_ENV} \
     # Make sure to update it!
 
 # System deps:
-RUN apt-get update && apt-get install -y curl
-
+RUN apt-get update && apt-get install -y curl git
 RUN curl -sSL https://install.python-poetry.org | python3 - && poetry --version  # Check if Poetry is installed correctly
 
 # Copy only requirements to cache them in docker layer
@@ -33,4 +32,4 @@ RUN poetry install $(test "$YOUR_ENV" = production && echo "--only=main") --no-i
 # Creating folders, and files for a project:
 COPY . /code
 
-RUN chmod +x wait-for-it/wait-for-it.sh
+RUN chmod +x ./wait-for-it.sh

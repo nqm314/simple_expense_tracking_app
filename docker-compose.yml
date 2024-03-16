@@ -5,7 +5,7 @@ services:
       context: .
       args:
         YOUR_ENV: development
-    command: ["./wait-for-it/wait-for-it.sh", "db:5432", "--", "python", "app/manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["./wait-for-it.sh", "db:5432", "--", "python", "app/manage.py", "runserver", "0.0.0.0:8000"]
     volumes: 
      - .:/code
     ports:
