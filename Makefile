@@ -1,6 +1,6 @@
 .PHONY: install
 install:
-	poetry install
+	docker-compose exec web poetry install
 
 .PHONY: build
 build:
