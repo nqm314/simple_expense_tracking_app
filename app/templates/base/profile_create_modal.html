@@ -1,14 +1,13 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
-
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{% endblock %}
 {% block title %}ProfileModal{% endblock %}
 
 {% block content %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">
-  Create Profile
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -22,9 +21,9 @@
       <div class="modal-body">
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
+          {{ form.media }}  <!-- Include this line -->
           {{ form|crispy }}
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>
@@ -32,4 +31,11 @@
     </div>
   </div>
 </div>
+
+<script>
+window.onload = function(){
+    $('#profileModal').modal({show: true});
+};
+</script>
+
 {% endblock %}

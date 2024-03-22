@@ -8,5 +8,8 @@
 </head>
 <body>
   <p>Testing Page</p>
+  {% for message in messages %}
+  <p id="messages">{{message}}</p>
+{% endfor %}
 </body>
 </html>

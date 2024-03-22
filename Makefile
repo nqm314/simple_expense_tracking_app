@@ -1,6 +1,10 @@
-.PHONY: install
-install:
-	docker-compose exec web poetry install
+.PHONY: update
+update:
+	docker-compose exec web poetry update
+
+.PHONY: freeze
+freeze:
+	docker-compose exec web pip freeze
 
 .PHONY: build
 build:
@@ -21,5 +25,5 @@ up:
 superuser: 
 	docker-compose exec web python app/manage.py createsuperuser
 
-.PHONY: update
-update: install migrations migrate
+.PHONY: mg
+mg: migrations migrate

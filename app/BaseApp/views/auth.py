@@ -26,10 +26,7 @@ def sign_in_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            if Profile.objects.filter(user=user).exists():
-                return redirect('home')
-            else:
-                return redirect('create_profile')
+            return redirect('home')
         else:
             messages.info(request, 'Username or password is incorrect.')
             return redirect('sign_in')

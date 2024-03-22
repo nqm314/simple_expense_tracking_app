@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'djmoney',
     'crispy_forms',
     'crispy_bootstrap4',
+    'tempus_dominus',
 ]
 
 MIDDLEWARE = [

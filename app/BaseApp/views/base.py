@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 from ..models import Transaction, Profile
 from django.contrib import messages
 from ..forms import ProfileCreationForm
+from ..decorators import profile_required
 
 
 # Create your views here.
 @login_required
+@profile_required
 def home(request):
     return render(request, 'base/home.html')
 
@@ -23,23 +25,23 @@ def add_transaction_view(request):
     pass
 
 @login_required
+@profile_required
 def profile_view(request):
-    try: 
-        profile = Profile.objects.get(user=request.user)
-        return render(request, 'base/user_profile.html', {'profile': profile,'user':request.user})
-    except Profile.DoesNotExist:
-        messages.info(request, 'Profile not created')
-        return redirect('testing') # should redirect to a create 
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'base/user_profile.html', {'profile': profile,'user':request.user})
 
 def profile_create_view(request):
     form = ProfileCreationForm()
     if request.method == 'POST':
-        form = ProfileCreationForm(request.POST)
+        print(request.POST,request.FILES)
+        form = ProfileCreationForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
             user = form.cleaned_data.get('username')
-            messages.success(request, f'Account was created for {user}')
-            return redirect('sign_in')
+            messages.success(request, f'Profile was created for {user}')
+            return redirect('home')
     context = {'form':form}
     return render(request,'base/profile_create_modal.html',context)
 
