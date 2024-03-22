@@ -2,36 +2,53 @@
 {% block title %}User Profile{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="container_header">
-        <h4>HỒ SƠ NGƯỜI DÙNG</h4>
+    <!-- <h2>User Profile</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Full Name:</strong> {{ user.get_full_name }}</p>
+    <p><strong>Phone:</strong> {{ profile.phone }}</p>
+    <p><strong>Birthdate:</strong> {{ profile.birthdate }}</p>
+    <p><strong>Income:</strong> {{ profile.income }}</p>
+    <p><strong>Spending Threshold:</strong> {{ profile.spending_threshold }}</p> -->
+    <div class="container">
+        <div class="container_header">
+            <h4>{{ user.username }}'s Profile</h4>
+        </div>
+        <ul class="container_info">
+            <li class="container_list">
+                <p class="container_list-title"><strong>Full Name:</strong></p>
+                <p class="container_list-info">{{ user.get_full_name }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title"><strong>Birthdate:</strong></p>
+                <p class="container_list-info">{{ profile.birthdate }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title"><strong>Phone:</strong></p>
+                <p class="container_list-info">{{ profile.phone }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title"><strong>Email:</strong></p>
+                <p class="container_list-info">{{ user.email }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title"><strong>Income:</strong></p>
+                <p class="container_list-info">{{ profile.income }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title"><strong>Spending Threshold:</strong></p>
+                <p class="container_list-info">{{ profile.spending_threshold }}</p>
+            </li>
+            <li class="container_list">
+                <p class="container_list-title title-btn"></p>
+                <a href="{% url 'testing' %}" class="container_btn">Edit Profile</a>
+            </li>
+        </ul>
     </div>
-    {% csrf_token %}
-    <ul class="container_info">
-        <li class="container_list">
-            <p class="container_list-title">Họ và tên</p>
-            <input type="text" placeholder="{{user.get_full_name}}" class="container_list-info">
-        </li>
-        <li class="container_list">
-            <p class="container_list-title">Ngày sinh</p>
-            <input type="text" placeholder="01/01/2000" onfocus="(this.type='date')" class="container_list-info">
-        </li>
-        <li class="container_list">
-            <p class="container_list-title">Địa chỉ</p>
-            <input type="text" placeholder="Thành phố Hồ Chí Minh" class="container_list-info">
-        </li>
-        <li class="container_list">
-            <p class="container_list-title">Số điện thoại</p>
-            <input type="text" placeholder="0123456789" class="container_list-info">
-        </li>
-        <li class="container_list">
-            <p class="container_list-title">Email</p>
-            <input type="text" placeholder="VanA123@gmail.com" class="container_list-info">
-        </li>
-        <li class="container_list">
-            <p class="container_list-title title-btn"></p>
-            <button class="container_btn">Lưu</button>
-        </li>
-    </ul>
-
 </div>
+{% if profile.profile_picture %}
+<div style="width: 100px; height: 100px; position: relative; overflow: hidden; border-radius: 50%;">
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" style="display: inline; margin: 0 auto; height: 100%; width: auto;">
+</div>
+{% endif %}
 {% endblock %}
