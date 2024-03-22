@@ -4,13 +4,19 @@ from ..models import Transaction, Profile
 from django.contrib import messages
 from ..forms import ProfileCreationForm
 from ..decorators import profile_required
+from django.shortcuts import get_object_or_404
+
+def transaction_detail(request, transaction_id):
+    transaction = get_object_or_404(Transaction, id=transaction_id)
+    return render(request, 'base/transaction_detail.html', {'transaction': transaction})
 
 
 # Create your views here.
 @login_required
 @profile_required
 def home(request):
-    return render(request, 'base/home.html')
+    transactions = Transaction.objects.filter(user=request.user)
+    return render(request, 'base/home.html', {'transactions': transactions})
 
 
 @login_required

@@ -1,5 +1,23 @@
 {% extends "base/base.html" %}
-{% block title %}Home{% endblock %}
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{% endblock %}{% block title %}Home{% endblock %}
 {% block content %}
 <!-- Unique content for home page -->
+{% for transaction in transactions %}
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header"><a href="{% url 'transaction_detail' transaction.id %}">{{ transaction.time }}</a></div>
+        <div class="card-body">
+            <h5 class="card-title">{{ transaction.amount }}</h5>
+            <div class="card-text border p-3 rounded">
+                {% for tag in transaction.tags.all %}
+                    <span class="badge badge-pill badge-primary">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
 {% endblock %}

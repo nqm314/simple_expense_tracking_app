@@ -14,7 +14,9 @@ urlpatterns = [
     path('auth/sign_out/', views.sign_out_view, name='sign_out'),
     path('profile/view/', views.profile_view, name='profile'),
     path('testing/', views.testing_view, name='testing'),
-    path('profile/create/',views.profile_create_view, name='create_profile')
+    path('profile/create/',views.profile_create_view, name='create_profile'),
+    path('transaction/<int:transaction_id>/', views.transaction_detail, name='transaction_detail'),
+
 ]
 
 if settings.DEBUG:

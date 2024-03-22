@@ -5,8 +5,6 @@ from django import forms
 from .models import Transaction, TransactionTag, Profile
 from tempus_dominus.widgets import DatePicker
 
-
-
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label="First name", widget=forms.TextInput(attrs={'placeholder': ''}))
     last_name = forms.CharField(label="Last name", widget=forms.TextInput(attrs={'placeholder': ''}))
@@ -41,8 +39,11 @@ class ProfileCreationForm(ModelForm):
             }
         )
     )
-
-
     class Meta:
         model = Profile
         fields = ['phone', 'birthdate', 'income', 'spending_threshold', 'profile_picture']
+
+class TransactionCreationForm(ModelForm):
+    class Meta:
+        model = Transaction
+        fields = '__all__'
