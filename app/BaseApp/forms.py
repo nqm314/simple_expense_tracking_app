@@ -1,4 +1,3 @@
-from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -16,7 +15,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = [ 'first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
-class ProfileCreationForm(ModelForm):
+class ProfileCreationForm(forms.ModelForm):
     birthdate = forms.DateField(
         widget=DatePicker(
             options={
@@ -43,7 +42,17 @@ class ProfileCreationForm(ModelForm):
         model = Profile
         fields = ['phone', 'birthdate', 'income', 'spending_threshold', 'profile_picture']
 
-class TransactionCreationForm(ModelForm):
+class TransactionForm(forms.ModelForm):
+    tags = forms.ModelMultipleChoiceField(
+        queryset=TransactionTag.objects.all(),
+        required=False,
+    )
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = ['amount', 'purpose', 'tags']
+
+class TransactionTagForm(forms.ModelForm):
+    name = forms.CharField(max_length=100, required=False)
+    class Meta:
+        model = TransactionTag
+        fields = ['name']

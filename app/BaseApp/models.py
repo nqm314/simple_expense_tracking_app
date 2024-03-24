@@ -16,7 +16,7 @@ class Profile(models.Model):
         return self.user.__str__()
 
 class TransactionTag(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tags')
     def __str__(self) -> str:
         return self.name
@@ -24,7 +24,7 @@ class TransactionTag(models.Model):
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
-    amount = MoneyField(max_digits=14, decimal_places=2)
+    amount = MoneyField(max_digits=14, decimal_places=2,default_currency='VND')
     purpose = models.TextField()
     tags = models.ManyToManyField(TransactionTag, related_name='transactions')
     def __str__(self) -> str:

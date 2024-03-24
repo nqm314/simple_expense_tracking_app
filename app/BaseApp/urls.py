@@ -16,7 +16,7 @@ urlpatterns = [
     path('testing/', views.testing_view, name='testing'),
     path('profile/create/',views.profile_create_view, name='create_profile'),
     path('transaction/<int:transaction_id>/', views.transaction_detail, name='transaction_detail'),
-
+    path('transaction/create_transaction',views.create_transaction_view, name='create_transaction'),
 ]
 
 if settings.DEBUG:

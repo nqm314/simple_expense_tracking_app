@@ -154,3 +154,6 @@ ul {
     width:100rem;
 }
 }
+.clickable {
+    cursor: pointer;
+}
