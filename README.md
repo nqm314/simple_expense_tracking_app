@@ -3,11 +3,12 @@
 Make sure you have these installed
 * Docker
 * make (check by running `make --version`)
-* poetry
+* poetry 
+* python (>=3.11)
 ## Run:
 Thực hiện các bước sau để chạy được trên local container
-1. poetry shell
-2. poetry install
+1. ```poetry shell```
+2. ```poetry install```
 3. Build và chạy container bằng lệnh:
 ```sh
 make up
