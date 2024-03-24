@@ -3,24 +3,27 @@
 Make sure you have these installed
 * Docker
 * make (check by running `make --version`)
+* poetry
 ## Run:
 Thực hiện các bước sau để chạy được trên local container
-1. Build và chạy container bằng lệnh:
+1. poetry shell
+2. poetry install
+3. Build và chạy container bằng lệnh:
 ```sh
 make up
 ```
-2. Mở 1 terminal khác, migrate database bằng lệnh
+4. Mở 1 terminal khác, migrate database bằng lệnh
 ```sh
 make migrations
 ```
 ```sh
 make migrate
 ```
-3. Khi này database đang rỗng, tạo superuser bằng lệnh:
+5. Khi này database đang rỗng, tạo superuser bằng lệnh:
 ```sh
 make superuser
 ```
-4. Vào trang 0.0.0.0:8000 hoặc 127.0.0.1:8000 sẽ thấy trang sign in. Chọn sign up để tạo tài khoản mới.
+6. Vào trang 0.0.0.0:8000 hoặc 127.0.0.1:8000 sẽ thấy trang sign in. Chọn sign up để tạo tài khoản mới.
 
 # Mô tả app
 ## Những chức năng bắt buộc:
