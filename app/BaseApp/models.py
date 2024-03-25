@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils import timezone
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ class TransactionTag(models.Model):
 
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=timezone.now)
     amount = MoneyField(max_digits=14, decimal_places=2,default_currency='VND')
     purpose = models.TextField()
     tags = models.ManyToManyField(TransactionTag, related_name='transactions')

@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import Transaction, TransactionTag, Profile
 from tempus_dominus.widgets import DatePicker
+from django.utils import timezone
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label="First name", widget=forms.TextInput(attrs={'placeholder': ''}))
@@ -47,9 +48,13 @@ class TransactionForm(forms.ModelForm):
         queryset=TransactionTag.objects.all(),
         required=False,
     )
+    time = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={'type':'datetime-local'}),
+        initial=timezone.now
+    )
     class Meta:
         model = Transaction
-        fields = ['amount', 'purpose', 'tags']
+        fields = ['amount', 'time', 'purpose', 'tags']
 
 class TransactionTagForm(forms.ModelForm):
     name = forms.CharField(max_length=100, required=False)
