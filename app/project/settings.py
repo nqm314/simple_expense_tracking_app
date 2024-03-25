@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'tempus_dominus',
+    'django_select2',
 ]
 
 MIDDLEWARE = [

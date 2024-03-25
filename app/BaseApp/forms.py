@@ -4,6 +4,8 @@ from django import forms
 from .models import Transaction, TransactionTag, Profile
 from tempus_dominus.widgets import DatePicker
 from django.utils import timezone
+from django_select2.forms import Select2MultipleWidget
+
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label="First name", widget=forms.TextInput(attrs={'placeholder': ''}))
@@ -47,6 +49,7 @@ class TransactionForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(
         queryset=TransactionTag.objects.all(),
         required=False,
+        widget=Select2MultipleWidget,
     )
     time = forms.DateTimeField(
         widget=forms.DateTimeInput(attrs={'type':'datetime-local'}),

@@ -15,7 +15,7 @@ migrate:
 	docker-compose exec web python app/manage.py migrate
 .PHONY: migrations
 migrations: 
-	docker-compose exec web python app/manage.py makemigrations
+	docker-compose exec web python app/manage.py makemigrations BaseApp
 
 .PHONY: up
 up: 

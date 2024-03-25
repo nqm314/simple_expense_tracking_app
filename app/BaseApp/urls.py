@@ -17,6 +17,8 @@ urlpatterns = [
     path('profile/create/',views.profile_create_view, name='create_profile'),
     path('transaction/<int:transaction_id>/', views.transaction_detail, name='transaction_detail'),
     path('transaction/create_transaction',views.create_transaction_view, name='create_transaction'),
+    path('add-tag/', views.add_tag_view, name='add-tag'),
+
 ]
 
 if settings.DEBUG:

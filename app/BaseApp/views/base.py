@@ -5,6 +5,10 @@ from django.contrib import messages
 from ..forms import ProfileCreationForm, TransactionForm, TransactionTagForm
 from ..decorators import profile_required
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+
 
 def transaction_detail(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id)
@@ -55,20 +59,24 @@ def profile_create_view(request):
 def create_transaction_view(request):
     if request.method == 'POST':
         form = TransactionForm(request.POST)
-        tag_form = TransactionTagForm(request.POST)
-        if form.is_valid() and tag_form.is_valid():
+        print(request.POST)
+        if form.is_valid():
             transaction = form.save(commit=False)
             transaction.user = request.user
             transaction.save()
-            tag = tag_form.save(commit=False)
-            tag.user = request.user
-            tag.save()
-            transaction.tags.add(tag)
+            transaction.tags.set(form.cleaned_data['tags'])
             return redirect('home')
     else:
         form = TransactionForm()
-        tag_form = TransactionTagForm()
-    return render(request, 'base/create_transaction.html', {'form': form, 'tag_form': tag_form})
+    return render(request, 'base/create_transaction.html', {'form': form})
+
+@csrf_exempt
+@login_required
+def add_tag_view(request):
+    if request.method == 'POST':
+        name = json.loads(request.body)['name']
+        tag = TransactionTag.objects.create(name=name, user=request.user)
+        return JsonResponse({ 'id': tag.id, 'name': tag.name })
 
 def testing_view(request):
     return render(request,'base/testing.html')
