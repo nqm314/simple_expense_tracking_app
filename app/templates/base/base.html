@@ -31,7 +31,7 @@
         </div>
         <div class="main_content">
             <div class="header">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light"">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     {% url 'home' as urlhome %}
                     {% if request.path == urlhome %}
                         <a class="navbar-brand">Hello {{ user.username }}</a>
