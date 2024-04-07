@@ -6,9 +6,10 @@ from ..forms import ProfileCreationForm, TransactionForm, TransactionTagForm
 from ..decorators import profile_required
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
 import json
-
+from django.db.models import Sum
+from django.shortcuts import render
+from django.db import models
 
 def transaction_detail(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id)
@@ -19,8 +20,12 @@ def transaction_detail(request, transaction_id):
 @login_required
 @profile_required
 def home(request):
-    transactions = Transaction.objects.filter(user=request.user)
-    return render(request, 'base/home.html', {'transactions': transactions})
+    transactions = Transaction.objects.filter(user=request.user).annotate(date=models.functions.TruncDate('time')).values('date').annotate(total=Sum('amount')).order_by('date')
+    dates = [transaction['date'].strftime('%Y-%m-%d') for transaction in transactions]
+    totals = [str(transaction['total']) for transaction in transactions]
+    transactionss = Transaction.objects.filter(user=request.user)
+    context = {'transactions': transactionss, 'dates': dates, 'totals': totals}
+    return render(request, 'base/home.html', context)
 
 
 @login_required
@@ -80,3 +85,11 @@ def add_tag_view(request):
 
 def testing_view(request):
     return render(request,'base/testing.html')
+
+@login_required
+def money_spent(request):
+    transactions = Transaction.objects.filter(user=request.user).annotate(date=models.functions.TruncDate('time')).values('date').annotate(total=Sum('amount')).order_by('date')
+    dates = [transaction['date'].strftime('%Y-%m-%d') for transaction in transactions]
+    totals = [str(transaction['total']) for transaction in transactions]
+    context = {'dates': dates, 'totals': totals}
+    return render(request, 'base/testing.html', context)

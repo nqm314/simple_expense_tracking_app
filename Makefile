@@ -27,3 +27,7 @@ superuser:
 
 .PHONY: mg
 mg: migrations migrate
+
+.PHONY: reset
+reset: 
+	sudo rm -rf .venv && poetry shell && poetry install && docker-compose build --no-cache && make up
