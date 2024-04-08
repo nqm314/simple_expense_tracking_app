@@ -23,7 +23,7 @@ def home(request):
     transactions = Transaction.objects.filter(user=request.user).annotate(date=models.functions.TruncDate('time')).values('date').annotate(total=Sum('amount')).order_by('date')
     dates = [transaction['date'].strftime('%Y-%m-%d') for transaction in transactions]
     totals = [str(transaction['total']) for transaction in transactions]
-    transactionss = Transaction.objects.filter(user=request.user)
+    transactionss = Transaction.objects.filter(user=request.user).order_by('-time')
     context = {'transactions': transactionss, 'dates': dates, 'totals': totals}
     return render(request, 'base/home.html', context)
 
