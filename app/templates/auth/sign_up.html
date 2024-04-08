@@ -22,8 +22,8 @@
       <input class="un " type="text" align="center" placeholder="{{ form.first_name.label }}" name="{{ form.first_name.name }}">
       <input class="un " type="text" align="center" placeholder="{{ form.last_name.label }}" name="{{ form.last_name.name }}">
       <input class="un " type="text" align="center" placeholder="{{ form.email.label }}" name="{{ form.email.name }}">
-      <input class="pass" type="password" align="center" placeholder="{{ form.password1.label }}" name="{{ form.password1.name }}">
-      <input class="pass" type="password" align="center" placeholder="{{ form.password2.label }}" name="{{ form.password2.name }}">
+      <input class="pass" type="password" align="center" placeholder="Password" name="{{ form.password1.name }}">
+      <input class="pass" type="password" align="center" placeholder="Confirm password" name="{{ form.password2.name }}">
       <input class="submit" align="center" type="submit" value="Sign up">
       <p class="forgot" align="center"><a href="{% url 'sign_in' %}">Sign in</p>
       {{ form.errors }}
