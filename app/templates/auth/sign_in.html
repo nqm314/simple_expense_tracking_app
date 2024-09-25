@@ -1,0 +1,76 @@
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>Sign In</title>
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>Sign In</h2>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.username.label_tag }} {{ form.username }}
+      </div>
+      <div class="form-group">
+        Password {{ form.password }}
+      </div>
+      {{form.errors}}
+      <input type="submit" value="Sign In">
+    </form>
+    {% for message in messages %}
+      <p id="messages">{{message}}</p>
+    {% endfor %}
+    <div class="forgot_password">
+      <span>Forgot Password?</span>
+    </div>
+    <div class="no_account">
+      Don't have an account yet? <a href="{% url 'sign_up' %}">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/Style-Signin.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Sign in</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <p class="sign" align="center">Sign in</p>
+      <form class="form1" action="" method="POST">
+        {% csrf_token %}
+        <input class="un " type="username" align="center" placeholder="Username" {{ form.username }} >
+
+        <input class="pass" align="center" placeholder="Password" {{ form.password }} >
+
+        
+        {{form.errors}}
+        <input class="submit" type="submit" align="center" value="Sign In">
+      </form>
+      {% for message in messages %}
+      <p id="messages">{{message}}</p>
+    {% endfor %}
+        <!-- <a class="submit" align="center">Sign in</a> -->
+        <p class="forgot" align="center"><a href="#">Forgot Password?</p>
+        <p class="forgot" align="center"><a href="{% url 'sign_up' %}">Sign up</p>     
+    </div>
+      
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/Style-Signup.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Sign up</title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center">Sign up</p>
+    <form class="form1" action="" method="POST">
+      {% csrf_token %}
+      <input class="un " type="text" align="center" placeholder="{{ form.username.label }}" name="{{ form.username.name }}">
+      <input class="un " type="text" align="center" placeholder="{{ form.first_name.label }}" name="{{ form.first_name.name }}">
+      <input class="un " type="text" align="center" placeholder="{{ form.last_name.label }}" name="{{ form.last_name.name }}">
+      <input class="un " type="text" align="center" placeholder="{{ form.email.label }}" name="{{ form.email.name }}">
+      <input class="pass" type="password" align="center" placeholder="Password" name="{{ form.password1.name }}">
+      <input class="pass" type="password" align="center" placeholder="Confirm password" name="{{ form.password2.name }}">
+      <input class="submit" align="center" type="submit" value="Sign up">
+      <p class="forgot" align="center"><a href="{% url 'sign_in' %}">Sign in</p>
+      {{ form.errors }}
+    </form>
+  </div>
+</body>
+
+</html>

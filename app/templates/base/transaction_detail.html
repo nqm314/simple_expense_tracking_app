@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ transaction.time }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ transaction.amount }}</h6>
+        <p class="card-text">{{ transaction.purpose }}</p>
+        <p class="card-text">
+            {% for tag in transaction.tags.all %}
+                <span class="badge badge-primary">{{ tag.name }}</span>
+            {% endfor %}
+        </p>
+    </div>
+</div>

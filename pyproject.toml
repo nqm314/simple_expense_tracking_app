@@ -8,11 +8,19 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^5.0.1"
+django-money = "^3.4.1"
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "^7.3.0"}
+pillow = "^10.2.0"
+psycopg2-binary = "^2.9.9"
+django-crispy-forms = "^2.1"
+crispy-bootstrap4 = "^2024.1"
+django-tempus-dominus = "^5.1.2.17"
+django-select2 = "^8.1.2"
 
 
 [tool.poetry.group.dev.dependencies]
 commitizen = "^3.14.1"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.7.1"]
 build-backend = "poetry.core.masonry.api"

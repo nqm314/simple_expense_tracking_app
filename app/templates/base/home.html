@@ -1,0 +1,94 @@
+{% extends "base/base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{% endblock %}{% block title %}Home{% endblock %}
+{% block content %}
+<!-- Unique content for home page -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{% url 'create_transaction' %}" class="btn btn-primary" style="margin-top: 10px; margin-left: 10px;">Add New Transaction</a>
+        </div>
+    </div>
+</div>
+<canvas id="myChart" height="60"></canvas>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for transaction in transactions %}
+        <tr data-toggle="modal" data-target="#transactionModal{{ transaction.id }}">
+            <td>{{ transaction.time }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>
+                {% for tag in transaction.tags.all %}
+                    <span class="badge badge-pill badge-primary">{{ tag.name }}</span>
+                {% endfor %}
+            </td>
+        </tr>
+
+        <!-- Modal -->
+        <div class="modal fade" id="transactionModal{{ transaction.id }}" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel{{ transaction.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="transactionModalLabel{{ transaction.id }}">{{ transaction.time }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6><b>Amount</b></h6><h6>{{ transaction.amount }}</h6>
+                        <h6><b>Purpose</b></h6><p>{{ transaction.purpose }}</p>
+                        <p>
+                            {% for tag in transaction.tags.all %}
+                                <span class="badge badge-primary">{{ tag.name }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(0, 181, 255, 0.2)'); // Top color with 20% opacity
+    gradient.addColorStop(1, 'rgba(0, 181, 255, 0)'); // Bottom color with 0% opacity
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ dates|safe }},
+            datasets: [{
+                label: 'Money Spent',
+                data: {{ totals|safe }},
+                backgroundColor: gradient,
+                borderColor: '#00B5FF',
+                borderWidth: 1,
+                fill: true,
+                tension: 0.4,
+            }]
+        },
+        options: {
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+
+{% endblock %}

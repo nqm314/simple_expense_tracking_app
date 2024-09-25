@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% block extra_head %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h5>Smart Spending</h5>
+            <ul>
+                <li><a href="{% url 'home'%}"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="{% url 'profile'%}"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="#"><i class="fas fa-receipt"></i>Transactions</a></li>
+                <li><a href="#"><i class="fas fa-bullseye"></i>Goal</a></li>
+                <li><a href="#"><i class="fas fa-user-cog"></i></i>Setting</a></li>
+                <li><a href="{% url 'sign_out' %}"><i class="fas fa-sign-out-alt"></i>Sign out</a></li>
+            </ul> 
+            <div class="social_media">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    {% url 'home' as urlhome %}
+                    {% if request.path == urlhome %}
+                        <a class="navbar-brand">Hello {{ user.username }}</a>
+                    {% endif %}
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">   
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item"><i class="fas fa-angle-double-right"></i></li>
+                            <li class="nav-item"><div class="datetime" id="date" style="margin-top: 3%;"></div></li>
+                        </ul>
+                        
+                        
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div> 
+                </nav>
+                
+                
+            </div>
+            <div class="info">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script>
+        var today = new Date();
+        var date =(today.getMonth()+1) + ' ' + today.getDate() + ', ' + today.getFullYear();
+        document.getElementById("date").innerHTML = date;
+
+    </script>
+</body>
+</html>
